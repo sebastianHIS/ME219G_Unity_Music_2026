@@ -303,7 +303,7 @@ public class AudioManager : MonoBehaviour
 
     public void PlayKey(GameObject keyObject)
     {
-        RuntimeManager.PlayOneShotAttached(pickupKey, keyObject);
+        //RuntimeManager.PlayOneShotAttached(pickupKey, keyObject);
 
         if (stingerKeyPickup.IsNull)
         {
@@ -316,6 +316,11 @@ public class AudioManager : MonoBehaviour
 
     public void PlayWeaponPickup()
     {
+        if (stingerWeaponPickup.IsNull)
+        {
+            Debug.LogWarning("Fmod event not found: stingerWeaponPickup");
+            return;
+        }
         RuntimeManager.PlayOneShot(stingerWeaponPickup);
     }
     
