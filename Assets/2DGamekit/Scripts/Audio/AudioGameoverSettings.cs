@@ -53,7 +53,7 @@ public class AudioGameoverSettings : MonoBehaviour
                             Debug.Log("You had an AudioZoneSetting set to 'None'");
                             break;
                         case Action.Play:
-                            audioManager.PlayGameOver();
+                            //audioManager.PlayGameOver();
                             /*i.emitter = GameObject.FindGameObjectWithTag(i.tag).GetComponent<StudioEventEmitter>();
                             Debug.Log("played yes i did");
                             //if (!i.emitter.EventInstance.isValid())
