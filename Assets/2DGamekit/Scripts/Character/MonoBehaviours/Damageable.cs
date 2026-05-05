@@ -110,6 +110,11 @@ namespace Gamekit2D
                 {
                     AudioManager.Instance.IncrementEnemyKills();
                 }
+                else if (gameObject.CompareTag("Player"))
+                {
+                    // Call on your AudioManager's Game Over code here. See if statement above for tips.
+                }
+                
                 OnDie.Invoke(damager, this);
                 m_ResetHealthOnSceneReload = true;
                 EnableInvulnerability();
