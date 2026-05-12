@@ -23,6 +23,7 @@ public class AudioBossManager : MonoBehaviour
     public float stage1Value = 0f;
     public float stage2Value = 0f;
     public float bossDeathValue = 0f;
+    [Tooltip("Set your FMOD parameter to continous between 0 and 1. 0 is when the boss's shield is off, 1 is when it's on.")]
     public string stunParameter = "";
 
     private StudioEventEmitter bossMusicEmitter;
@@ -92,16 +93,16 @@ public class AudioBossManager : MonoBehaviour
         }
         switch (shieldState)
         {
-            case 0:
+            case 0: // Shield off
                 Debug.Log("shield state 0");
                 eventInstance = RuntimeManager.CreateInstance(bossShield);
                 RuntimeManager.AttachInstanceToGameObject(eventInstance, boss.transform);
                 eventInstance.setParameterByName("ShieldState", 0f);
                 eventInstance.start();
                 eventInstance.release();
-                bossMusicEmitter.SetParameter(stunParameter, 0f);
+                bossMusicEmitter.SetParameter(stunParameter, 0f); 
                 break;
-            case 1:
+            case 1: // Shield on
                 eventInstance = RuntimeManager.CreateInstance(bossShield);
                 RuntimeManager.AttachInstanceToGameObject(eventInstance, boss.transform);
                 eventInstance.setParameterByName("ShieldState", 1f);
