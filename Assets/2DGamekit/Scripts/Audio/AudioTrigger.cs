@@ -7,6 +7,7 @@ using FMODUnity;
 public class AudioTrigger : MonoBehaviour
 {
     public bool destroyAfterUse = true;
+    public string triggerTag = "Player";
 
     public enum Action
     {
@@ -38,7 +39,7 @@ public class AudioTrigger : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag(triggerTag))
         {
             if (audioTriggerSettings.Length != 0)
             {
