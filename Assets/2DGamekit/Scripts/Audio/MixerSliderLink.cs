@@ -37,7 +37,7 @@ namespace Gamekit2D
         }
 
 
-        void SliderValueChange(float value)
+        public void SliderValueChange(float value)
         {
             if (vcaName == "")
             {
