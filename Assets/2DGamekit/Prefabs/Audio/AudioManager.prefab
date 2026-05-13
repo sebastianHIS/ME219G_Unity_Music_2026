@@ -320,7 +320,6 @@ MonoBehaviour:
   eventEmitters:
     musicMenu: {fileID: 110158806593295546}
     music: {fileID: 5158617837186310920}
-    music02: {fileID: 0}
     musicBoss: {fileID: 3257842776572977270}
     musicPause: {fileID: 4860983653683116548}
     ambiance: {fileID: 4318290237544591130}
@@ -465,13 +464,6 @@ MonoBehaviour:
       Data3: -564437090
       Data4: -914482641
     Path: event:/Enemies/Enemy_Die
-  stingerGameOver:
-    Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
   stingerKeyPickup:
     Guid:
       Data1: 0
