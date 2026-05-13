@@ -18,10 +18,11 @@ public class AudioBossManager : MonoBehaviour
     [SerializeField] private EventReference bossDie;
 
     [Header("Music Settings")]
+    [Tooltip("The Unity tag of the object that uses the Studio Event Emitter for the boss music")]
     public string bossMusic = "";
     public string stageParameter = "";
-    public float stage1Value = 0f;
     public float stage2Value = 0f;
+    public float stage3Value = 0f;
     public float bossDeathValue = 0f;
     [Tooltip("Set your FMOD parameter to continous between 0 and 1. 0 is when the boss's shield is off, 1 is when it's on.")]
     public string stunParameter = "";
@@ -31,6 +32,14 @@ public class AudioBossManager : MonoBehaviour
 
     private void Start()
     {
+        if (bossMusic == "")
+        {
+            Debug.Log("No Boss Music Set!");
+            bossMusicEmitter = gameObject.AddComponent<StudioEventEmitter>();
+            return;
+        }
+            
+        
         bossMusicEmitter = GameObject.FindGameObjectWithTag(bossMusic).GetComponent<StudioEventEmitter>();
     }
 
@@ -100,6 +109,11 @@ public class AudioBossManager : MonoBehaviour
                 eventInstance.setParameterByName("ShieldState", 0f);
                 eventInstance.start();
                 eventInstance.release();
+                if (bossMusicEmitter.EventReference.IsNull)
+                {
+                    Debug.LogWarning("Fmod event not found: bossMusicEmitter");
+                    return;
+                }
                 bossMusicEmitter.SetParameter(stunParameter, 0f); 
                 break;
             case 1: // Shield on
@@ -108,6 +122,11 @@ public class AudioBossManager : MonoBehaviour
                 eventInstance.setParameterByName("ShieldState", 1f);
                 eventInstance.start();
                 eventInstance.release();
+                if (bossMusicEmitter.EventReference.IsNull)
+                {
+                    Debug.LogWarning("Fmod event not found: bossMusicEmitter");
+                    return;
+                }
                 bossMusicEmitter.SetParameter(stunParameter, 1f);
                 break;
         }
@@ -123,35 +142,50 @@ public class AudioBossManager : MonoBehaviour
         switch (steamStage)
         {
             case 1:
-                bossMusicEmitter.SetParameter(stageParameter, stage1Value);
+                
                 eventInstance = RuntimeManager.CreateInstance(bossSteamStage);
                 RuntimeManager.AttachInstanceToGameObject(eventInstance, boss.transform);
                 eventInstance.setParameterByName("SteamStage", 1f);
                 eventInstance.start();
                 eventInstance.release();
+                if (bossMusicEmitter.EventReference.IsNull)
+                {
+                    Debug.LogWarning("Fmod event not found: bossMusicEmitter");
+                    return;
+                }
+                bossMusicEmitter.SetParameter(stageParameter, stage2Value);
                 break;
             case 2:
-                bossMusicEmitter.SetParameter(stageParameter, stage2Value);
                 eventInstance = RuntimeManager.CreateInstance(bossSteamStage);
                 RuntimeManager.AttachInstanceToGameObject(eventInstance, boss.transform);
                 eventInstance.setParameterByName("SteamStage", 2f);
                 eventInstance.start();
                 eventInstance.release();
+                if (bossMusicEmitter.EventReference.IsNull)
+                {
+                    Debug.LogWarning("Fmod event not found: bossMusicEmitter");
+                    return;
+                }
+                bossMusicEmitter.SetParameter(stageParameter, stage3Value);
                 break;
         }
     }
     
     public void BossDie(GameObject boss)
     {
-        if (bossDie.IsNull)
-        {
+        if (!bossDie.IsNull)
+            RuntimeManager.PlayOneShotAttached(bossDie, boss);
+        else
             Debug.LogWarning("Fmod event not found: bossDie");
+        
+        if (!bossMusicEmitter.EventReference.IsNull)
+        {
             bossMusicEmitter.SetParameter(stunParameter, 1f);
             bossMusicEmitter.SetParameter(stageParameter, bossDeathValue);
-            return;
         }
-        RuntimeManager.PlayOneShotAttached(bossDie, boss);
-        bossMusicEmitter.SetParameter(stunParameter, 1f);
-        bossMusicEmitter.SetParameter(stageParameter, bossDeathValue);
+        else
+        {
+            Debug.LogWarning("Fmod event not found: bossMusicEmitter");
+        }
     }
 }
