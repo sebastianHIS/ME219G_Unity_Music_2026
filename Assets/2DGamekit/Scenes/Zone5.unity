@@ -52157,7 +52157,7 @@ PrefabInstance:
     - target: {fileID: 8283495161900147264, guid: 5e02d266c3b0145ccad01d32166fc7b1,
         type: 3}
       propertyPath: audioSettings.Array.size
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8283495161900147264, guid: 5e02d266c3b0145ccad01d32166fc7b1,
         type: 3}
@@ -52172,7 +52172,7 @@ PrefabInstance:
     - target: {fileID: 8283495161900147264, guid: 5e02d266c3b0145ccad01d32166fc7b1,
         type: 3}
       propertyPath: audioSettings.Array.data[2].tag
-      value: MusicBoss
+      value: Music
       objectReference: {fileID: 0}
     - target: {fileID: 8283495161900147264, guid: 5e02d266c3b0145ccad01d32166fc7b1,
         type: 3}
@@ -53343,7 +53343,7 @@ GameObject:
   - component: {fileID: 975682040}
   - component: {fileID: 975682039}
   m_Layer: 0
-  m_Name: CutsceneParamTrigger
+  m_Name: AudioCutsceneSignalReceiver
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -55350,6 +55350,8 @@ PlayableDirector:
     value: {fileID: 0}
   - key: {fileID: 2652136526517044341, guid: bb48787907c249b48a5df0383be03462, type: 2}
     value: {fileID: 975682040}
+  - key: {fileID: 3159033844131259271, guid: bb48787907c249b48a5df0383be03462, type: 2}
+    value: {fileID: 0}
   m_ExposedReferences:
     m_References:
     - b85dec140dbe8ea4c8522ae5cf61604d: {fileID: 1094086841}
@@ -56296,7 +56298,7 @@ RectTransform:
   m_Father: {fileID: 810218496}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -63685,7 +63687,7 @@ RectTransform:
   m_Father: {fileID: 1214935727}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 6, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -64812,8 +64814,8 @@ RectTransform:
   - {fileID: 690138203}
   m_Father: {fileID: 377920363}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: -0.000061035156, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -68276,7 +68278,7 @@ RectTransform:
   m_Father: {fileID: 1146144057}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -69538,27 +69540,27 @@ PrefabInstance:
     - target: {fileID: 4256432018734796894, guid: 056286e10563bf64cae51e44c59f8d93,
         type: 3}
       propertyPath: stage1Value
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4256432018734796894, guid: 056286e10563bf64cae51e44c59f8d93,
         type: 3}
       propertyPath: stage2Value
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4256432018734796894, guid: 056286e10563bf64cae51e44c59f8d93,
         type: 3}
       propertyPath: stunParameter
-      value: BossStun
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 4256432018734796894, guid: 056286e10563bf64cae51e44c59f8d93,
         type: 3}
       propertyPath: bossDeathValue
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4256432018734796894, guid: 056286e10563bf64cae51e44c59f8d93,
         type: 3}
       propertyPath: stageParameter
-      value: BossStage
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 4256432018734796895, guid: 056286e10563bf64cae51e44c59f8d93,
         type: 3}
@@ -69633,6 +69635,7 @@ SceneRoots:
   - {fileID: 862809227}
   - {fileID: 4256432019810382529}
   - {fileID: 1650290794}
+  - {fileID: 975682041}
   - {fileID: 2026288438}
   - {fileID: 553744952}
   - {fileID: 111665384}
@@ -69668,4 +69671,3 @@ SceneRoots:
   - {fileID: 348153816}
   - {fileID: 493960761}
   - {fileID: 266430816}
-  - {fileID: 975682041}
