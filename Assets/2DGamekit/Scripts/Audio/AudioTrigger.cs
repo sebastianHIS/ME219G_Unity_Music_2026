@@ -6,7 +6,7 @@ using FMODUnity;
 
 public class AudioTrigger : MonoBehaviour
 {
-    public bool destroyAfterUse = true;
+    public bool destroyAfterUse = false;
     public string triggerTag = "Player";
 
     public enum Action
